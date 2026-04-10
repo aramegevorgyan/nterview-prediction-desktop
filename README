@@ -1,0 +1,18 @@
+# 🏥 Heart Disease / Interview Success Prediction
+
+## 📌 Project Overview
+This project focuses on predicting health outcomes (or interview success) based on various factors such as lifestyle, medical history, or professional background. The goal is to compare three different machine learning classification methods to find the most reliable predictor.
+
+## 📊 Dataset Features
+The model uses several categorical and numerical features:
+* **BusinessTravel:** Frequency of travel (Mapped: 0-2).
+* **MaritalStatus:** Single, Married, or Divorced (Mapped: 0-2).
+* **Gender & OverTime:** Binary features (0-1).
+* **Target Variable:** `accepted for the interview` (or `target` for heart disease).
+
+## 🛠️ Installation (Arch Linux)
+To run this project, ensure you have the necessary libraries installed on your Arch system:
+```bash
+sudo pacman -S python-pandas python-scikit-learn python-seaborn python-matplotlib
+# For Plotly/Nbformat if using Jupyter
+pip install nbformat --break-system-packages
