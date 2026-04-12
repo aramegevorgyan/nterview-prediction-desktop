@@ -1,18 +1,85 @@
-# 🏥 Heart Disease / Interview Success Prediction
+# Interview Acceptance Prediction
 
-## 📌 Project Overview
-This project focuses on predicting health outcomes (or interview success) based on various factors such as lifestyle, medical history, or professional background. The goal is to compare three different machine learning classification methods to find the most reliable predictor.
+## Overview
+This project predicts whether a candidate will be accepted for an interview using the data in `logatta.csv`.
 
-## 📊 Dataset Features
-The model uses several categorical and numerical features:
-* **BusinessTravel:** Frequency of travel (Mapped: 0-2).
-* **MaritalStatus:** Single, Married, or Divorced (Mapped: 0-2).
-* **Gender & OverTime:** Binary features (0-1).
-* **Target Variable:** `accepted for the interview` (or `target` for heart disease).
+The main notebook is `project2_1.ipynb`. It now:
+- loads and preprocesses the dataset
+- trains a `RandomForestClassifier`
+- shows classification metrics
+- plots feature importance and project-specific charts
+- asks Ollama to explain the model output in plain language
 
-## 🛠️ Installation (Arch Linux)
-To run this project, ensure you have the necessary libraries installed on your Arch system:
+## Files
+- `project2_1.ipynb`: cleaned notebook with model training, evaluation, visualizations, and Ollama explanation
+- `logatta.csv`: input dataset
+
+## Requirements
+Install the Python packages used in the notebook:
+
 ```bash
-sudo pacman -S python-pandas python-scikit-learn python-seaborn python-matplotlib
-# For Plotly/Nbformat if using Jupyter
-pip install nbformat --break-system-packages
+pip install pandas numpy scikit-learn matplotlib seaborn ollama
+```
+
+## Ollama
+The notebook uses Ollama to explain:
+- model quality
+- metric meanings
+- top feature importance
+- confusion matrix results
+- sample predictions
+
+When you run the notebook, Ollama takes the real model output from the training and evaluation cells and explains it in plain language. The explanation is based on the actual metrics, feature importance values, confusion matrix, and prediction examples produced in `project2_1_v2.ipynb`.
+
+## Explanation Description
+The Ollama explanation follows this structure:
+
+### 1. Feature Input (The "Predictors")
+The model looks at specific markers that correlate with the target outcome.
+
+- Numerical features: measurable values such as age, rates, scores, cholesterol, or blood pressure.
+- Categorical features: labels or grouped values such as gender, chest pain type, marital status, travel type, or lifestyle habits.
+
+### 2. The Classification Process
+These are common ways a machine learning classifier can think about the data:
+
+- Logistic Regression: predicts the probability of a yes or no outcome and helps show which factors are the strongest indicators.
+- Decision Trees: work like a flowchart and ask a sequence of feature-based questions to narrow down the result.
+- K-Nearest Neighbors (KNN): compares a new row to similar past rows and predicts based on the nearest examples.
+- Random Forest Classifier: the current notebook uses this method, which combines many decision trees and uses their combined vote for the final prediction.
+
+### 3. Training and Evaluation
+The model learns from historical labeled data where the outcome is already known.
+
+- Training: it identifies patterns in `logatta.csv`.
+- Testing: it is evaluated on rows it has not seen before.
+- Metrics: the notebook reports accuracy, precision, recall, F1-score, out-of-bag score, the confusion matrix, and sample predictions.
+
+### 4. Ollama's Role
+After the model runs, Ollama receives the generated outputs and explains:
+
+- what the model quality means
+- what each metric means
+- what the most important features suggest
+- what the confusion matrix means in simple words
+- what the sample predictions show
+- what could be improved next
+
+Make sure Ollama is running locally and that you have a model installed, for example:
+
+```bash
+ollama pull llama3.2
+ollama serve
+```
+
+If Ollama is not running, the notebook will still train the model, but the explanation cell will print an error message instead of the AI explanation.
+
+## How To Run
+1. Open `project2_1.ipynb` in Jupyter or VS Code.
+2. Run the cells from top to bottom.
+3. Check the metrics, charts, and Ollama explanation.
+
+## Notes
+- The target column is `accepted for the interview`.
+- This is a binary classification problem, so the notebook uses a classifier instead of a regressor.
+- The explanation structure can also be reused for similar health-prediction or yes/no classification projects.
