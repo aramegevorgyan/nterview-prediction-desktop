@@ -13,6 +13,8 @@ The main notebook is `project2_1.ipynb`. It now:
 ## Files
 - `project2_1.ipynb`: cleaned notebook with model training, evaluation, visualizations, and Ollama explanation
 - `logatta.csv`: input dataset
+- `scripts/generate_plots.py`: exports notebook-style charts and a text summary for the Qt viewer
+- `qt4_app/`: standalone Qt desktop window that explains the project and displays the generated plots
 
 ## Requirements
 Install the Python packages used in the notebook:
@@ -79,7 +81,23 @@ If Ollama is not running, the notebook will still train the model, but the expla
 2. Run the cells from top to bottom.
 3. Check the metrics, charts, and Ollama explanation.
 
+## Qt Desktop Viewer
+If you want a classic desktop interface instead of only a notebook, this repo also includes a Qt app.
+
+1. From the project root, run `python scripts/generate_plots.py`.
+2. Open `qt4_app/qt4_app.pro` in Qt Creator or run `qmake` on it.
+3. Build and start the application.
+
+The desktop app now targets Qt5/Qt6 Widgets, which is much easier to build on modern Windows setups than legacy Qt4.
+
+The Qt window shows:
+- what the current project does
+- why the desktop UI is useful
+- the generated model summary
+- the exported plots from the notebook workflow
+
 ## Notes
 - The target column is `accepted for the interview`.
 - This is a binary classification problem, so the notebook uses a classifier instead of a regressor.
 - The explanation structure can also be reused for similar health-prediction or yes/no classification projects.
+- The current repository is about interview acceptance, not heart disease. A healthcare predictor would use the same general ML idea, but it would need a medical dataset and medically relevant features.

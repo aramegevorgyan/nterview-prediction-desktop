@@ -1,0 +1,15 @@
+Project summary
+---------------
+Dataset rows: 1492
+Accepted rows: 157
+Rejected rows: 1335
+Model type: RandomForestRegressor
+Mean Squared Error: 0.0243
+R-squared: 0.7384
+
+Top features:
+- MaritalStatus: 0.3018
+- OverTime: 0.2944
+- Education: 0.1218
+
+Note: the repository currently predicts interview acceptance, not heart disease.
